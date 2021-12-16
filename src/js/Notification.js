@@ -1,3 +1,6 @@
+import { formatCurrency } from "./utils";
+import classNames from "classnames";
+
 export default class Notification {
   static get types() {
     return {
@@ -10,6 +13,10 @@ export default class Notification {
   constructor() {
     this.container = document.createElement("div");
     this.container.classList.add("notification-container");
+  }
+
+  empty() {
+    this.container.innerHTML = "";
   }
 
   render() {

@@ -29,6 +29,9 @@ export default class Application extends EventEmitter {
 
     pizzas.forEach((pizza) => {
       const card = new Card({ ...pizza });
+      const notification = new Notification({ ...pizza});
+      console.log(card);
+      notification.render();
       card.render();
 
       document.querySelector(".main").appendChild(card.container);

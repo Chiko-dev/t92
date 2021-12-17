@@ -19,7 +19,10 @@ export default class Notification {
     this.container.innerHTML = "";
   }
 
-  render() {
+  render(type, price) {
+    classNames();
+    formatCurrency();
+
     const template = `
 <div class="notification type-pepperoni">
   <button class="delete"></button>

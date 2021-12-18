@@ -19,24 +19,27 @@ export default class Notification extends EventEmitter{
     this._price = price;
     this.close = document.querySelector(".delete");
     
+    
     this.container = document.createElement("div");
     this.container.classList.add("notification-container");
+
+    this.delete = document.querySelector(".delete");
   }
 
   empty() {
-    this.container.innerHTML = "";
+      this.container.innerHTML = "";
   }
 
   render() {
     formatCurrency();
-    
-    const template = `
-<div class="notification type-${this._type}">
-  <button class="delete"></button>
-  🍕 <span class="type">${this._type}</span> (<span class="price">0,00</span>) has been added to your order.
-</div>
-    `;
-    console.log(`${this._type}`)
-    this.container.innerHTML = template;
+      const template = `
+      <div class="notification type-${this._type}">
+        <button class="delete"></button>
+        🍕 <span class="type">${this._type}</span> (<span class="price">${this._price}</span>) has been added to your order.
+      </div>
+          `;
+      
+          this.container.innerHTML = template;
+  
   }
 }

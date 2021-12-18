@@ -37,7 +37,7 @@ export default class Application extends EventEmitter {
       document.querySelector(".main").appendChild(card.container);
 
       card.container.addEventListener("click", () =>{
-        notification.render({ ...pizza});
+        notification.render({...pizza});
         document.querySelector(".main").appendChild(notification.container); 
         
       });

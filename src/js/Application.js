@@ -11,7 +11,7 @@ export default class Application extends EventEmitter {
 
   constructor() {
     super();
-
+    
     const pizzas = [
       {
         type: Card.types.HAWAIIAN,
@@ -31,12 +31,19 @@ export default class Application extends EventEmitter {
       const card = new Card({ ...pizza });
       const notification = new Notification({ ...pizza});
       card.render();
-      notification.render();
-      
-
+      console.log(notification.container);
       document.querySelector(".main").appendChild(card.container);
-      document.querySelector(".main").appendChild(notification.container);
+
+      card.container.addEventListener("click", () =>{
+        notification.render();
+        document.querySelector(".main").appendChild(notification.container);  
+        notification.empty();
+      });
     });
+
+
+          
+          
 
     this.emit(Application.events.READY);
   }

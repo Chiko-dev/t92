@@ -19,7 +19,6 @@ export default class Notification extends EventEmitter{
     this._price = price;
     this.close = document.querySelector(".delete");
     
-    
     this.container = document.createElement("div");
     this.container.classList.add("notification-container");
 
@@ -27,7 +26,7 @@ export default class Notification extends EventEmitter{
   }
 
   empty() {
-      this.container.innerHTML = "";
+    this.container.innerHTML = "";
   }
 
   render() {
@@ -38,7 +37,7 @@ export default class Notification extends EventEmitter{
       "is-danger": this._type === Card.types.HAWAIIAN,
     })}">
         <button class="delete"></button>
-        🍕 <span class="type">${this._type}</span> (<span class="price">${this._price} EUR</span>) has been added to your order.
+        🍕 <span class="type">${this._type}</span> (<span class="price"> ${this._price} </span>) has been added to your order.
       </div>
           `;
       

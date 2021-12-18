@@ -31,13 +31,13 @@ export default class Application extends EventEmitter {
       
       const card = new Card({ ...pizza });
       
-      const notification = new Notification({ ...pizza});
+      const notification = new Notification();
 
       card.render();
       document.querySelector(".main").appendChild(card.container);
 
       card.container.addEventListener("click", () =>{
-        notification.render();
+        notification.render({ ...pizza});
         document.querySelector(".main").appendChild(notification.container); 
         
       });

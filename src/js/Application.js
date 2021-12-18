@@ -37,7 +37,6 @@ export default class Application extends EventEmitter {
       card.container.addEventListener("click", () =>{
         notification.render();
         document.querySelector(".main").appendChild(notification.container);  
-        notification.empty();
       });
     });
 

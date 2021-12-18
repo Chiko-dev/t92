@@ -36,14 +36,13 @@ export default class Notification extends EventEmitter{
   }
 
   render({type, price}) {
-      formatCurrency();
 
       const template = `
       <div class="notification type-${type} ${classNames({
       "is-danger": type === Card.types.HAWAIIAN,
       })}">
         <button class="delete"></button>
-        🍕 <span class="type-${type}">${type}</span> (<span class="price">${price} €</span>) has been added to your order.
+        🍕 <span class="type-${type}">${type}</span> (<span class="price">${formatCurrency(price)}</span>) has been added to your order.
       </div>
           `;
       

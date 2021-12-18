@@ -44,7 +44,7 @@ export default class Notification extends EventEmitter{
       "is-danger": this._type === Card.types.HAWAIIAN,
       })}">
         <button class="delete"></button>
-        🍕 <span class="notification type-${this._type}"></span> (<span class="price">${this._price}</span>) has been added to your order.
+        🍕 <span class="type-${this._type}">${this._type}</span> (<span class="price">${this._price}</span>) has been added to your order.
       </div>
           `;
       

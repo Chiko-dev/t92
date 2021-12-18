@@ -19,11 +19,10 @@ export default class Notification extends EventEmitter{
     };
   }
 
-  constructor({type, price}) {
+  constructor() {
     super();
   
-    this._type = type;
-    this._price = price;
+
     this.close = document.querySelector(".delete");
     
     this.container = document.createElement("div");
@@ -36,9 +35,10 @@ export default class Notification extends EventEmitter{
     this.container.innerHTML = "";
   }
 
-  render() {
+  render({type, price}) {
       formatCurrency();
-
+    this._type = type;
+    this._price = price;
       const template = `
       <div class="notification type-${this._type} ${classNames({
       "is-danger": this._type === Card.types.HAWAIIAN,

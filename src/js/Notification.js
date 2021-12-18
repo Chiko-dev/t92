@@ -4,6 +4,13 @@ import classNames from "classnames";
 import Card from "./Card"
 
 export default class Notification extends EventEmitter{
+
+  static get events() {
+    return {
+      NOTIFICATION: "notification",
+    };
+  }
+
   static get types() {
     return {
       PEPPERONI: "pepperoni",
@@ -35,13 +42,19 @@ export default class Notification extends EventEmitter{
       const template = `
       <div class="notification type-${this._type} ${classNames({
       "is-danger": this._type === Card.types.HAWAIIAN,
-    })}">
+      })}">
         <button class="delete"></button>
-        🍕 <span class="type">${this._type}</span> (<span class="price"> ${this._price} </span>) has been added to your order.
+        🍕 <span class="type">${this._type}</span> (<span class="price">${this._price}</span>) has been added to your order.
       </div>
           `;
       
-          this.container.innerHTML = template;
-  
+      this.container.innerHTML = template;
+
+      this.container.addEventListener("click", () => {
+      this.emit(Notification.events.NOTIFICATION, {
+        type: this._type,
+        price: this._price,
+      });
+    });
   }
 }
